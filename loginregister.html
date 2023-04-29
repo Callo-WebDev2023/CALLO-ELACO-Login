@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="slogtyle.css">
+	<script>
+
+		function register() {
+			document.querySelector('.login-container').classList.add('hidden');
+			document.querySelector('.register-container').classList.remove('hidden');
+		}
+		
+		function login() {
+			document.querySelector('.register-container').classList.add('hidden');
+			document.querySelector('.login-container').classList.remove('hidden');
+		}
+		
+		
+		function addData(){
+			const email = document.getElementById('registeremail').value;
+			const pass = document.getElementById('registerpwd').value;
+		
+		
+			localStorage.setItem('userEmail',email);
+			localStorage.setItem('userPwd',pass);
+		
+			alert("Succesfully registered");
+		}
+		
+		function checkData(){
+			const enterEmail = document.getElementById('loginemail').value;
+			const enterPwd = document.getElementById('loginpwd').value;
+		
+		
+			const getEmail = localStorage.getItem('userEmail');
+			const getPwd = localStorage.getItem('userPwd');
+		
+		
+		   
+		  if (enterEmail === getEmail && enterPwd === getPwd) {
+			alert("Login successful!");
+			window.location.href = "index.html"; // Redirect to success page
+		  } else {
+			alert("Invalid username or password.");
+		  }
+		}
+		
+		</script>
+</head>
+<body>
+
+	 <a href="#">
+        <img src="./assets/images/YAN_SHOP_21.png" width="260" height="148" alt="YANSHOP homeclick" class="logo">
+      </a>
+
+	<div class="login-container">
+
+		<h2>Login</h2>
+		<form>
+        <input type="email" id="loginemail" name="loginemail" placeholder="Email" autocomplete="off">
+        <br>
+        <br>
+        <input type="password" id="loginpwd" name="loginpwd" placeholder="Password">
+        <br><br>
+        <input type="submit" value="Submit" onclick="checkData()">
+		</form>
+		<p>Don't have an account? <a href="#" onclick="register()">Register here.</a></p>
+	</div>
+
+	<div class="register-container hidden">
+		<h2>Register</h2>
+		
+		<form>
+	    <input type="email" id="registeremail" name="registeremail" placeholder="Email" autocomplete="off">
+        <br><br>
+        <input type="password" id="registerpwd" name="registerpwd" placeholder="Password">
+        <br><br>
+        <input type="submit" value="Submit" onclick="addData()">
+
+		</form>
+		<p>Already have an account? <a href="#" onclick="login()">Login here.</a></p>
+	</div>
+
+	
+	
+</body>
+
+
+
+</html>
